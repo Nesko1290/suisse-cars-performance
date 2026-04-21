@@ -1,7 +1,11 @@
 import { resolve } from 'path';
 
+// Base is '/' for Hostinger (domain root) or '/suisse-cars-performance/' for GitHub Pages.
+// Override at build time with BASE env var, e.g. BASE=/suisse-cars-performance/ npm run build.
+const base = process.env.BASE || '/';
+
 export default {
-  base: '/',
+  base,
   build: {
     rollupOptions: {
       input: {

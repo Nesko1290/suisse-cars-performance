@@ -182,7 +182,7 @@
   const id = new URLSearchParams(location.search).get('id');
   const content = document.getElementById('content');
 
-  fetch('/vehicles.json').then(r => r.json()).then(data => {
+  fetch('vehicles.json').then(r => r.json()).then(data => {
     const v = data.vehicles.find(x => x.id === id) || data.vehicles[0];
     if (!v) { content.innerHTML = '<div class="loading">Véhicule introuvable. <a href="vehicules.html" style="color:var(--gold)">Retour au stock</a></div>'; return; }
 

@@ -414,7 +414,7 @@
     render();
   });
 
-  fetch('/vehicles.json').then(r => r.json()).then(data => {
+  fetch('vehicles.json').then(r => r.json()).then(data => {
     ALL = data.vehicles;
     buildFilters(ALL);
     render();

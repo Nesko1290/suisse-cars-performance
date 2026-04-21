@@ -414,7 +414,7 @@
     const local = localStorage.getItem('scp_vehicles');
     if (local) { try { DATA = JSON.parse(local); return; } catch(e) {} }
     try {
-      const r = await fetch('/vehicles.json');
+      const r = await fetch('vehicles.json');
       DATA = await r.json();
     } catch(e) { DATA = { vehicles: [] }; }
   }
