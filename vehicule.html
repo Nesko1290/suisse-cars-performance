@@ -9,13 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --obsidian: #07090D;
-    --carbon: #0E1218;
-    --graphite: #171C24;
-    --ivory: #F4F0E6;
-    --smoke: #B8B5AD;
-    --gold: #C8A66B;
-    --gold-glow: #E8C584;
+    --obsidian: #FFFFFF;
+    --carbon: #F7F8FA;
+    --graphite: #EEF2F7;
+    --ivory: #0A2540;
+    --smoke: #6B7785;
+    --gold: #003D82;
+    --gold-glow: #2563EB;
     --spring: cubic-bezier(.16,1,.3,1);
     --maxw: 1360px;
   }
@@ -27,11 +27,11 @@
   body::before {
     content:''; position: fixed; inset: 0; pointer-events: none; z-index: 100;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.035; mix-blend-mode: overlay;
+    opacity: 0.02; mix-blend-mode: multiply;
   }
 
   /* NAV (shared) */
-  nav.top { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 14px 0; backdrop-filter: blur(24px) saturate(140%); background: rgba(7,9,13,0.85); border-bottom: 1px solid rgba(200,166,107,0.12); }
+  nav.top { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 14px 0; backdrop-filter: blur(24px) saturate(140%); background: rgba(255, 255, 255,0.85); border-bottom: 1px solid rgba(0, 61, 130,0.12); }
   nav.top .row { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
   .brand { display: flex; align-items: center; gap: 14px; font-weight: 600; letter-spacing: 0.14em; font-size: 14px; text-transform: uppercase; }
   .brand .mark { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 16px; }
@@ -77,10 +77,10 @@
   .d-grid { display: grid; grid-template-columns: 1fr 380px; gap: 56px; padding-bottom: 140px; }
 
   .d-section { margin-bottom: 56px; }
-  .d-section h2 { font-size: 28px; font-weight: 300; letter-spacing: -0.01em; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(200,166,107,0.2); }
+  .d-section h2 { font-size: 28px; font-weight: 300; letter-spacing: -0.01em; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(0, 61, 130,0.2); }
   .d-section h2 em { color: var(--gold); font-style: normal; font-weight: 500; }
 
-  .spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(200,166,107,0.12); border: 1px solid rgba(200,166,107,0.12); }
+  .spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0, 61, 130,0.12); border: 1px solid rgba(0, 61, 130,0.12); }
   .spec-cell { padding: 22px 24px; background: var(--carbon); }
   .spec-cell .l { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke); margin-bottom: 8px; }
   .spec-cell .v { font-size: 16px; color: var(--ivory); }
@@ -89,7 +89,7 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px; list-style: none;
   }
   .opts-list li {
-    padding: 14px 0; border-bottom: 1px solid rgba(244,240,230,0.06);
+    padding: 14px 0; border-bottom: 1px solid rgba(10, 37, 64,0.06);
     display: flex; align-items: center; gap: 14px; color: var(--ivory); font-size: 15px;
   }
   .opts-list li::before {
@@ -106,7 +106,7 @@
   .side {
     position: sticky; top: 96px; align-self: start;
     padding: 40px 36px; background: var(--carbon);
-    border: 1px solid rgba(200,166,107,0.14);
+    border: 1px solid rgba(0, 61, 130,0.14);
   }
   .side h3 { font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 500; }
   .side .big-tel {
@@ -123,7 +123,7 @@
     transition: all .3s var(--spring);
   }
   .side .sub-btn:hover { background: var(--gold); color: var(--obsidian); }
-  .side .divider { height: 1px; background: rgba(244,240,230,0.08); margin: 28px 0; }
+  .side .divider { height: 1px; background: rgba(10, 37, 64,0.08); margin: 28px 0; }
   .side p { font-size: 13px; color: var(--smoke); line-height: 1.6; margin-bottom: 10px; }
   .side p strong { color: var(--ivory); font-weight: 500; }
   .trust-row { display: grid; grid-template-columns: auto 1fr; gap: 14px; margin-top: 18px; align-items: start; }
@@ -132,7 +132,7 @@
   .trust-row p strong { display: block; margin-bottom: 2px; font-size: 13px; }
 
   /* FOOTER */
-  footer { padding: 56px 0 32px; border-top: 1px solid rgba(244,240,230,0.08); background: var(--carbon); text-align: center; color: var(--smoke); font-size: 12px; letter-spacing: 0.12em; }
+  footer { padding: 56px 0 32px; border-top: 1px solid rgba(10, 37, 64,0.08); background: var(--carbon); text-align: center; color: var(--smoke); font-size: 12px; letter-spacing: 0.12em; }
 
   .loading { padding: 180px 0; text-align: center; color: var(--smoke); }
 
@@ -158,9 +158,10 @@
       <span class="brand-name"><strong>Suisse Cars</strong><span>PERFORMANCE</span></span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#services">Services</a></li>
+      <li><a href="services.html">Services</a></li>
       <li><a href="vehicules.html">Véhicules</a></li>
-      <li><a href="index.html#story">À propos</a></li>
+      <li><a href="recharge-clim.html">Recharge clim</a></li>
+      <li><a href="pneus.html">Pneus dès 50.-</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <a href="tel:+41783151040" class="cta-btn solid">☎ +41 78 315 10 40</a>

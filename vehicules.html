@@ -10,15 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --obsidian: #07090D;
-    --carbon: #0E1218;
-    --graphite: #171C24;
-    --steel: #2A313C;
-    --ivory: #F4F0E6;
-    --smoke: #B8B5AD;
-    --gold: #C8A66B;
-    --gold-glow: #E8C584;
-    --accent: #D4AF37;
+    --obsidian: #FFFFFF;
+    --carbon: #F7F8FA;
+    --graphite: #EEF2F7;
+    --steel: #D6DEE8;
+    --ivory: #0A2540;
+    --smoke: #6B7785;
+    --gold: #003D82;
+    --gold-glow: #2563EB;
+    --accent: #0057B7;
     --spring: cubic-bezier(.16,1,.3,1);
     --maxw: 1440px;
   }
@@ -30,7 +30,7 @@
   body::before {
     content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 100;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.035; mix-blend-mode: overlay;
+    opacity: 0.02; mix-blend-mode: multiply;
   }
 
   /* NAV */
@@ -38,8 +38,8 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
     padding: 14px 0;
     backdrop-filter: blur(24px) saturate(140%);
-    background: rgba(7,9,13,0.85);
-    border-bottom: 1px solid rgba(200,166,107,0.12);
+    background: rgba(255, 255, 255,0.85);
+    border-bottom: 1px solid rgba(0, 61, 130,0.12);
   }
   nav.top .row { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
   .brand { display: flex; align-items: center; gap: 14px; font-weight: 600; letter-spacing: 0.14em; font-size: 14px; text-transform: uppercase; }
@@ -67,7 +67,7 @@
   .page-head {
     padding: 160px 0 56px;
     background: linear-gradient(180deg, var(--carbon) 0%, var(--obsidian) 100%);
-    border-bottom: 1px solid rgba(200,166,107,0.12);
+    border-bottom: 1px solid rgba(0, 61, 130,0.12);
   }
   .page-head h1 {
     font-size: clamp(40px, 5.2vw, 68px); font-weight: 200; letter-spacing: -0.025em; line-height: 1;
@@ -88,21 +88,21 @@
   aside.filters {
     position: sticky; top: 96px; align-self: start;
     padding: 36px 28px; background: var(--carbon);
-    border: 1px solid rgba(200,166,107,0.12);
+    border: 1px solid rgba(0, 61, 130,0.12);
     max-height: calc(100vh - 120px); overflow-y: auto;
   }
   aside.filters h3 {
     font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
     margin-bottom: 8px; font-weight: 500;
   }
-  .filter-group { padding: 20px 0; border-bottom: 1px solid rgba(244,240,230,0.06); }
+  .filter-group { padding: 20px 0; border-bottom: 1px solid rgba(10, 37, 64,0.06); }
   .filter-group:last-child { border-bottom: 0; }
   .filter-group label {
     display: block; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
     color: var(--smoke); margin-bottom: 12px;
   }
   .filter-group select, .filter-group input[type=text], .filter-group input[type=number] {
-    width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgba(244,240,230,0.14);
+    width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgba(10, 37, 64,0.14);
     padding: 10px 0; font-family: inherit; color: var(--ivory); font-size: 14px;
   }
   .filter-group select:focus, .filter-group input:focus { outline: none; border-color: var(--gold); }
@@ -110,13 +110,13 @@
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip {
     font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 14px;
-    border: 1px solid rgba(244,240,230,0.12); color: var(--smoke); cursor: pointer;
+    border: 1px solid rgba(10, 37, 64,0.12); color: var(--smoke); cursor: pointer;
     transition: all .3s var(--spring);
   }
-  .chip:hover, .chip.on { border-color: var(--gold); color: var(--ivory); background: rgba(200,166,107,0.08); }
+  .chip:hover, .chip.on { border-color: var(--gold); color: var(--ivory); background: rgba(0, 61, 130,0.08); }
   .reset-btn {
     width: 100%; margin-top: 12px; padding: 12px; background: transparent;
-    border: 1px solid rgba(244,240,230,0.14); color: var(--smoke);
+    border: 1px solid rgba(10, 37, 64,0.14); color: var(--smoke);
     font-family: inherit; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
     cursor: pointer; transition: all .3s var(--spring);
   }
@@ -129,14 +129,14 @@
   .sort-wrap { display: flex; align-items: center; gap: 14px; }
   .sort-wrap label { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--smoke); }
   .sort-wrap select {
-    background: var(--carbon); color: var(--ivory); border: 1px solid rgba(200,166,107,0.18);
+    background: var(--carbon); color: var(--ivory); border: 1px solid rgba(0, 61, 130,0.18);
     padding: 10px 16px; font-family: inherit; font-size: 13px;
   }
 
   /* GRID */
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .card {
-    display: block; background: var(--carbon); border: 1px solid rgba(244,240,230,0.05);
+    display: block; background: var(--carbon); border: 1px solid rgba(10, 37, 64,0.05);
     transition: all .5s var(--spring); overflow: hidden; position: relative;
   }
   .card:hover { border-color: var(--gold); transform: translateY(-4px); }
@@ -147,24 +147,24 @@
   .card:hover .ph img { transform: scale(1.06); }
   .card .tag {
     position: absolute; top: 14px; left: 14px; z-index: 2;
-    background: rgba(7,9,13,0.8); color: var(--gold); padding: 6px 12px;
+    background: rgba(255, 255, 255,0.8); color: var(--gold); padding: 6px 12px;
     font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-    border: 1px solid rgba(200,166,107,0.35); backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 61, 130,0.35); backdrop-filter: blur(8px);
   }
   .card .fav {
     position: absolute; top: 14px; right: 14px; z-index: 2;
     width: 36px; height: 36px; display: grid; place-items: center;
-    background: rgba(7,9,13,0.6); color: var(--ivory); border: 0;
+    background: rgba(255, 255, 255,0.6); color: var(--ivory); border: 0;
     cursor: pointer; transition: all .3s var(--spring); backdrop-filter: blur(8px);
   }
-  .card .fav:hover { color: var(--gold); background: rgba(7,9,13,0.9); }
+  .card .fav:hover { color: var(--gold); background: rgba(255, 255, 255,0.9); }
   .card-body { padding: 24px 26px 28px; }
   .card-brand { font-size: 11px; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
   .card-title { font-size: 21px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 4px; }
   .card-sub { font-size: 12px; color: var(--smoke); margin-bottom: 18px; }
   .card-specs {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px;
-    padding: 16px 0; border-top: 1px solid rgba(244,240,230,0.06); border-bottom: 1px solid rgba(244,240,230,0.06);
+    padding: 16px 0; border-top: 1px solid rgba(10, 37, 64,0.06); border-bottom: 1px solid rgba(10, 37, 64,0.06);
   }
   .card-spec { }
   .card-spec .v { font-size: 14px; color: var(--ivory); font-weight: 400; }
@@ -184,7 +184,7 @@
   .empty h3 { color: var(--ivory); font-size: 24px; font-weight: 300; margin-bottom: 10px; }
 
   /* FOOTER */
-  footer { padding: 56px 0 32px; border-top: 1px solid rgba(244,240,230,0.08); background: var(--carbon); text-align: center; color: var(--smoke); font-size: 12px; letter-spacing: 0.12em; }
+  footer { padding: 56px 0 32px; border-top: 1px solid rgba(10, 37, 64,0.08); background: var(--carbon); text-align: center; color: var(--smoke); font-size: 12px; letter-spacing: 0.12em; }
 
   @media (max-width: 1024px) {
     .listing-wrap { grid-template-columns: 1fr; }
@@ -203,9 +203,10 @@
       <span class="brand-name"><strong>Suisse Cars</strong><span>PERFORMANCE</span></span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#services">Services</a></li>
+      <li><a href="services.html">Services</a></li>
       <li><a href="vehicules.html" class="active">Véhicules</a></li>
-      <li><a href="index.html#story">À propos</a></li>
+      <li><a href="recharge-clim.html">Recharge clim</a></li>
+      <li><a href="pneus.html">Pneus dès 50.-</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <a href="tel:+41783151040" class="cta-btn solid">☎ +41 78 315 10 40</a>
