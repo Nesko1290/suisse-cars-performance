@@ -200,15 +200,34 @@
       <button class="tab" data-tab="add">Ajouter / modifier</button>
       <button class="tab" data-tab="list">Parc actuel</button>
       <button class="tab" data-tab="export">Export / Import</button>
+      <button class="tab" data-tab="settings">API & Réglages</button>
     </div>
 
     <!-- DECODE -->
     <div class="panel on" id="panel-decode">
+      <div id="api-warn" class="status show err" style="margin-bottom:24px; display:none">
+        ⚠ Clé API SwissCarInfo non configurée — le décodage complet (réception par type + équipements) nécessite une clé. Configurez-la dans l'onglet <strong>API &amp; Réglages</strong>. Pour l'instant, seul le décodage VIN basique (NHTSA, USA) fonctionnera.
+      </div>
+
       <div class="decoder-grid">
 
         <div class="decoder-card">
+          <h3>Décodeur N° de réception par type (field 24)</h3>
+          <p class="hint">Source <strong>SwissCarInfo</strong> — données officielles FEDRO, 730'000+ véhicules, 270+ champs techniques + équipements. Saisissez le numéro du champ 24 de la carte grise (ex. <code>1PA537</code>).</p>
+          <div class="row-gap">
+            <div class="field"><label>N° de réception par type</label><input type="text" id="type-input" class="mono" placeholder="1PA537" style="text-transform:uppercase" /></div>
+            <button class="btn solid" id="type-go">Décoder</button>
+          </div>
+          <div class="status" id="type-status"></div>
+          <div class="result" id="type-result" style="display:none"></div>
+          <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn ghost" id="type-apply" disabled>↪ Pré-remplir le formulaire avec toutes les options</button>
+          </div>
+        </div>
+
+        <div class="decoder-card">
           <h3>Décodeur VIN (numéro de châssis)</h3>
-          <p class="hint">17 caractères, majuscules et chiffres (sans I/O/Q). Source : NHTSA vPIC (gratuit).</p>
+          <p class="hint">17 caractères, majuscules et chiffres (sans I/O/Q). Utilise <strong>SwissCarInfo</strong> en priorité (EU complet) puis <strong>NHTSA vPIC</strong> (gratuit, USA) en fallback.</p>
           <div class="row-gap">
             <div class="field"><label>Numéro de châssis</label><input type="text" id="vin-input" class="mono" placeholder="WP0ZZZ99ZNS200001" maxlength="17" style="text-transform:uppercase" /></div>
             <button class="btn solid" id="vin-go">Décoder</button>
@@ -220,38 +239,37 @@
           </div>
         </div>
 
-        <div class="decoder-card">
-          <h3>Réception par type (Suisse)</h3>
-          <p class="hint">Pas d'API publique ASTRA — on utilise un template marque/modèle/année qui pré-charge les options typiques. À compléter ensuite manuellement.</p>
-          <div class="field"><label>N° de réception par type</label><input type="text" id="type-input" class="mono" placeholder="1CE 123 45" /></div>
-          <div class="form-grid" style="margin-top:8px">
-            <div class="field"><label>Marque</label>
-              <select id="tpl-brand">
-                <option value="">—</option>
-                <option>Porsche</option><option>Mercedes-Benz</option><option>BMW</option>
-                <option>Audi</option><option>Lamborghini</option><option>Ferrari</option>
-                <option>Land Rover</option><option>Bentley</option><option>McLaren</option>
-                <option>Rolls-Royce</option><option>Maserati</option>
-              </select>
-            </div>
-            <div class="field"><label>Segment</label>
-              <select id="tpl-seg">
-                <option value="">—</option>
-                <option value="sport">Coupé sport</option>
-                <option value="gt">Grand Tourisme</option>
-                <option value="sedan">Berline sport</option>
-                <option value="suv">SUV premium</option>
-                <option value="wagon">Break sport</option>
-                <option value="conv">Cabriolet</option>
-              </select>
-            </div>
-          </div>
-          <div style="margin-top:16px">
-            <button class="btn solid" id="tpl-apply">Pré-remplir options & specs type</button>
-          </div>
-          <div class="status" id="tpl-status"></div>
-        </div>
+      </div>
 
+      <div class="decoder-card" style="margin-top:32px">
+        <h3>Fallback — Template marque / segment</h3>
+        <p class="hint">Si aucune API ne retourne de résultat, appliquez un template manuel puis affinez dans l'onglet <em>Ajouter / modifier</em>.</p>
+        <div class="form-grid" style="margin-top:8px">
+          <div class="field"><label>Marque</label>
+            <select id="tpl-brand">
+              <option value="">—</option>
+              <option>Porsche</option><option>Mercedes-Benz</option><option>BMW</option>
+              <option>Audi</option><option>Lamborghini</option><option>Ferrari</option>
+              <option>Land Rover</option><option>Bentley</option><option>McLaren</option>
+              <option>Rolls-Royce</option><option>Maserati</option>
+            </select>
+          </div>
+          <div class="field"><label>Segment</label>
+            <select id="tpl-seg">
+              <option value="">—</option>
+              <option value="sport">Coupé sport</option>
+              <option value="gt">Grand Tourisme</option>
+              <option value="sedan">Berline sport</option>
+              <option value="suv">SUV premium</option>
+              <option value="wagon">Break sport</option>
+              <option value="conv">Cabriolet</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:16px">
+          <button class="btn solid" id="tpl-apply">Pré-remplir options & specs type</button>
+        </div>
+        <div class="status" id="tpl-status"></div>
       </div>
     </div>
 
@@ -321,17 +339,53 @@
       </div>
     </div>
 
+    <!-- SETTINGS -->
+    <div class="panel" id="panel-settings">
+      <div class="decoder-card" style="margin-bottom:24px">
+        <h3>Clé API SwissCarInfo</h3>
+        <p class="hint">Source officielle FEDRO — 730'000+ véhicules, 270+ champs, réception par type (field 24) + VIN, multilingue FR/DE/IT/EN. <a href="https://swisscarinfo.ch/en/api" target="_blank" style="color:var(--gold)">Créer un compte et récupérer la clé API →</a></p>
+        <div class="field"><label>API Key (stockée uniquement dans votre navigateur)</label><input type="password" id="api-key-input" class="mono" placeholder="sci_..." /></div>
+        <div class="field">
+          <label>Langue des données</label>
+          <select id="api-lang"><option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="en">English</option></select>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+          <button class="btn solid" id="api-save">Enregistrer</button>
+          <button class="btn ghost" id="api-test">Tester la connexion</button>
+          <button class="btn danger" id="api-clear">Supprimer</button>
+        </div>
+        <div class="status" id="api-status"></div>
+      </div>
+
+      <div class="decoder-card">
+        <h3>Code admin (accès panneau)</h3>
+        <p class="hint">Changez le code d'accès au panneau admin. Le nouveau code sera demandé à la prochaine connexion.</p>
+        <div class="field"><label>Nouveau code</label><input type="password" id="pwd-input" placeholder="••••••••" /></div>
+        <div style="margin-top:16px">
+          <button class="btn solid" id="pwd-save">Enregistrer le nouveau code</button>
+        </div>
+        <div class="status" id="pwd-status"></div>
+      </div>
+
+      <div class="decoder-card" style="margin-top:24px">
+        <h3>Informations API</h3>
+        <p class="hint" style="margin-bottom:16px"><strong>SwissCarInfo</strong> — Base URL <code class="mono">https://api.swisscarinfo.ch/v3/</code> — Endpoints <code class="mono">/search?q={query}&amp;type=variant</code> (réception par type) et <code class="mono">/search?q={vin}&amp;type=vin</code>. Réponse JSON avec 270+ champs organisés en 21 sections, mapping automatique vers le formulaire véhicule.</p>
+        <p class="hint"><strong>NHTSA vPIC</strong> (fallback VIN, gratuit) — <code class="mono">https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/{vin}?format=json</code> — bonne couverture USA, limitée pour les véhicules européens.</p>
+      </div>
+    </div>
+
   </div>
 </main>
 
 <script>
   // ============ LOGIN ============
-  const ADMIN_PWD = 'suisse2025'; // à changer côté code + auth serveur si besoin
+  const ADMIN_PWD_DEFAULT = 'suisse2025';
+  function getAdminPwd() { return localStorage.getItem('scp_admin_pwd') || ADMIN_PWD_DEFAULT; }
   const loginWall = document.getElementById('login-wall');
   if (sessionStorage.getItem('scp_admin') === '1') loginWall.style.display = 'none';
   document.getElementById('login-btn').onclick = () => {
     const v = document.getElementById('login-pwd').value;
-    if (v === ADMIN_PWD) {
+    if (v === getAdminPwd()) {
       sessionStorage.setItem('scp_admin', '1');
       loginWall.style.display = 'none';
     } else {
@@ -366,8 +420,75 @@
   }
   function persist() { localStorage.setItem('scp_vehicles', JSON.stringify(DATA)); }
 
-  // ============ VIN DECODER (NHTSA vPIC) ============
-  async function decodeVin(vin) {
+  // ============ SWISSCARINFO API ============
+  const SCI_BASE = 'https://api.swisscarinfo.ch/v3';
+  function getApiKey() { return localStorage.getItem('scp_scinfo_key') || ''; }
+  function getApiLang() { return localStorage.getItem('scp_scinfo_lang') || 'fr'; }
+
+  async function swissCarInfoSearch(query, type /* 'vin' | 'variant' */) {
+    const key = getApiKey();
+    if (!key) throw new Error('Clé API SwissCarInfo manquante — onglet API & Réglages.');
+    const url = `${SCI_BASE}/search?q=${encodeURIComponent(query)}&type=${type}&lang=${getApiLang()}`;
+    const r = await fetch(url, { headers: { 'Authorization': `Bearer ${key}`, 'Accept': 'application/json' } });
+    if (r.status === 401 || r.status === 403) throw new Error('Clé API invalide ou quota épuisé.');
+    if (!r.ok) throw new Error(`SwissCarInfo HTTP ${r.status}`);
+    const j = await r.json();
+    if (!j.success) throw new Error(j.message || 'Réponse API invalide');
+    if (!j.data || !j.data.length) throw new Error('Aucun véhicule trouvé pour ce numéro.');
+    if (j.meta && j.meta.quota) console.info('Quota SwissCarInfo:', j.meta.quota);
+    return j.data[0];
+  }
+
+  // Pick first defined value from a list of possible paths
+  function pick(obj, ...paths) {
+    for (const p of paths) {
+      const val = p.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
+      if (val !== undefined && val !== null && val !== '') return val;
+    }
+    return undefined;
+  }
+
+  // Normalize SwissCarInfo 270+ field response into our form schema
+  function normalizeSwissCarInfo(d) {
+    const out = {};
+    out.brand = pick(d, 'make', 'manufacturer', 'brand', 'identification.make');
+    out.model = pick(d, 'model', 'model_name', 'identification.model');
+    out.year  = parseInt(pick(d, 'year', 'model_year', 'first_registration_year', 'identification.year') || 0) || undefined;
+    out.firstRegistration = pick(d, 'first_registration', 'first_registration_date', 'identification.first_registration');
+    out.fuel  = pick(d, 'fuel', 'fuel_type', 'engine.fuel_type', 'engine.fuel');
+    out.transmission = pick(d, 'transmission', 'transmission_type', 'transmission.type', 'drivetrain.transmission');
+    out.drive = pick(d, 'drive', 'drive_type', 'drivetrain.drive', 'drivetrain.type');
+    out.power = parseInt(pick(d, 'power_hp', 'engine.power_hp', 'performance.power_hp', 'performance.horsepower') || 0) || undefined;
+    if (!out.power) {
+      const kw = parseFloat(pick(d, 'power_kw', 'engine.power_kw', 'performance.power_kw') || 0);
+      if (kw) out.power = Math.round(kw * 1.35962);
+    }
+    out.displacement = parseInt(pick(d, 'displacement', 'displacement_cc', 'engine.displacement', 'engine.displacement_cc') || 0) || undefined;
+    out.consumption = parseFloat(pick(d, 'consumption_combined', 'consumption.combined', 'wltp.consumption_combined') || 0) || undefined;
+    out.co2  = parseInt(pick(d, 'co2', 'co2_combined', 'emissions.co2_combined', 'wltp.co2_combined') || 0) || undefined;
+    out.doors = parseInt(pick(d, 'doors', 'dimensions.doors', 'body.doors') || 0) || undefined;
+    out.seats = parseInt(pick(d, 'seats', 'dimensions.seats', 'body.seats') || 0) || undefined;
+    out.color = pick(d, 'color_exterior', 'colors.exterior', 'appearance.color_exterior');
+    out.interior = pick(d, 'color_interior', 'colors.interior', 'appearance.color_interior', 'interior.upholstery');
+    out.vin = pick(d, 'vin', 'identification.vin', 'chassis_number');
+    out.typeApproval = pick(d, 'type_approval', 'field_24', 'identification.type_approval', 'swiss.type_approval');
+
+    // Equipment/options: try multiple shapes
+    let opts = pick(d, 'equipment', 'options', 'features', 'standard_equipment', 'vehicle_equipment');
+    const extra = pick(d, 'optional_equipment', 'extras', 'accessories');
+    if (Array.isArray(extra)) opts = [...(Array.isArray(opts) ? opts : []), ...extra];
+    if (Array.isArray(opts)) {
+      out.options = opts.map(o => typeof o === 'string' ? o : (o.name || o.label || o.description || '')).filter(Boolean);
+    } else if (opts && typeof opts === 'object') {
+      out.options = Object.values(opts).flat().map(o => typeof o === 'string' ? o : (o && (o.name || o.label || o.description))).filter(Boolean);
+    } else { out.options = []; }
+
+    out.description = pick(d, 'description', 'summary');
+    return out;
+  }
+
+  // ============ VIN DECODER (NHTSA fallback) ============
+  async function decodeVinNHTSA(vin) {
     const url = `https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${encodeURIComponent(vin)}?format=json`;
     const r = await fetch(url);
     if (!r.ok) throw new Error('Réponse NHTSA invalide');
@@ -377,47 +498,102 @@
     return out;
   }
 
+  function normalizeNHTSA(d, vin) {
+    return {
+      vin,
+      brand: d['Make'], model: d['Model'], year: parseInt(d['Model Year']) || undefined,
+      fuel: d['Fuel Type - Primary'], transmission: d['Transmission Style'],
+      drive: d['Drive Type'], doors: parseInt(d['Doors']) || undefined,
+      displacement: parseInt(d['Displacement (CC)']) || undefined,
+      power: d['Engine Power (kW)'] ? Math.round(parseFloat(d['Engine Power (kW)']) * 1.35962) : undefined,
+      options: []
+    };
+  }
+
+  // VIN BUTTON
   document.getElementById('vin-go').onclick = async () => {
     const vin = document.getElementById('vin-input').value.trim().toUpperCase();
     const st = document.getElementById('vin-status');
     const res = document.getElementById('vin-result');
     const apply = document.getElementById('vin-apply');
-    st.className = 'status show'; st.textContent = 'Interrogation NHTSA…';
+    st.className = 'status show'; st.textContent = 'Interrogation SwissCarInfo…';
     res.style.display = 'none'; apply.disabled = true;
     if (vin.length !== 17) { st.className = 'status show err'; st.textContent = 'Le VIN doit contenir 17 caractères.'; return; }
+    let normalized = null, source = '';
     try {
-      const data = await decodeVin(vin);
-      lastDecoded = { vin, data };
-      const keys = ['Make','Model','Model Year','Manufacturer Name','Vehicle Type','Body Class','Doors','Displacement (L)','Displacement (CC)','Engine Number of Cylinders','Engine Power (kW)','Fuel Type - Primary','Transmission Style','Transmission Speeds','Drive Type','Plant Country','Series','Trim'];
-      res.innerHTML = '<dl>' + keys.filter(k => data[k]).map(k => `<dt>${k}</dt><dd>${data[k]}</dd>`).join('') + '</dl>';
+      if (getApiKey()) {
+        const raw = await swissCarInfoSearch(vin, 'vin');
+        normalized = normalizeSwissCarInfo(raw); normalized.vin = vin;
+        source = 'SwissCarInfo';
+      }
+    } catch(e) {
+      st.className = 'status show'; st.textContent = `SwissCarInfo : ${e.message} — fallback NHTSA…`;
+    }
+    if (!normalized) {
+      try {
+        const raw = await decodeVinNHTSA(vin);
+        normalized = normalizeNHTSA(raw, vin);
+        source = 'NHTSA vPIC (USA)';
+      } catch(e) {
+        st.className = 'status show err'; st.textContent = 'Erreur : ' + e.message; return;
+      }
+    }
+    lastDecoded = normalized;
+    const shown = ['brand','model','year','fuel','transmission','drive','power','displacement','doors','color','options'];
+    res.innerHTML = '<dl>' + shown.filter(k => normalized[k] !== undefined && normalized[k] !== '' && (!Array.isArray(normalized[k]) || normalized[k].length)).map(k => `<dt>${k}</dt><dd>${Array.isArray(normalized[k]) ? normalized[k].length + ' options détectées' : normalized[k]}</dd>`).join('') + '</dl>';
+    res.style.display = 'block';
+    apply.disabled = false;
+    st.className = 'status show ok'; st.textContent = `✓ Décodé via ${source} — cliquez sur « Pré-remplir » pour remplir le formulaire.`;
+  };
+
+  document.getElementById('vin-apply').onclick = () => applyDecoded(lastDecoded);
+
+  // TYPE APPROVAL (field 24) BUTTON
+  let lastDecodedType = null;
+  document.getElementById('type-go').onclick = async () => {
+    const q = document.getElementById('type-input').value.trim().toUpperCase().replace(/\s+/g,'');
+    const st = document.getElementById('type-status');
+    const res = document.getElementById('type-result');
+    const apply = document.getElementById('type-apply');
+    st.className = 'status show'; st.textContent = 'Interrogation SwissCarInfo…';
+    res.style.display = 'none'; apply.disabled = true;
+    if (!q) { st.className = 'status show err'; st.textContent = 'Saisissez un numéro de réception par type.'; return; }
+    if (!getApiKey()) { st.className = 'status show err'; st.textContent = 'Clé API SwissCarInfo requise (onglet API & Réglages).'; return; }
+    try {
+      const raw = await swissCarInfoSearch(q, 'variant');
+      const normalized = normalizeSwissCarInfo(raw);
+      normalized.typeApproval = q;
+      lastDecodedType = normalized;
+      const shown = ['brand','model','year','fuel','transmission','power','displacement','doors','seats','color','interior','co2','consumption','options'];
+      res.innerHTML = '<dl>' + shown.filter(k => normalized[k] !== undefined && normalized[k] !== '' && (!Array.isArray(normalized[k]) || normalized[k].length)).map(k => `<dt>${k}</dt><dd>${Array.isArray(normalized[k]) ? `<strong style="color:var(--gold)">${normalized[k].length} équipements :</strong> ${normalized[k].slice(0,6).join(' · ')}${normalized[k].length > 6 ? ' …' : ''}` : normalized[k]}</dd>`).join('') + '</dl>';
       res.style.display = 'block';
       apply.disabled = false;
-      st.className = 'status show ok'; st.textContent = '✓ VIN décodé — cliquez sur « Pré-remplir le formulaire » pour l\'utiliser.';
+      st.className = 'status show ok'; st.textContent = `✓ ${normalized.brand || ''} ${normalized.model || ''} décodé via SwissCarInfo (FEDRO) — ${(normalized.options || []).length} équipements récupérés.`;
     } catch(e) {
       st.className = 'status show err'; st.textContent = 'Erreur : ' + e.message;
     }
   };
 
-  document.getElementById('vin-apply').onclick = () => {
-    if (!lastDecoded) return;
-    const d = lastDecoded.data;
-    const set = (id, v) => { if (v) document.getElementById(id).value = v; };
-    set('v-vin', lastDecoded.vin);
-    set('v-brand', d['Make']);
-    set('v-model', d['Model']);
-    set('v-year', d['Model Year']);
-    if (d['Displacement (CC)']) set('v-disp', Math.round(parseFloat(d['Displacement (CC)'])));
-    if (d['Engine Power (kW)']) set('v-power', Math.round(parseFloat(d['Engine Power (kW)']) * 1.35962));
-    set('v-fuel', d['Fuel Type - Primary']);
-    set('v-trans', d['Transmission Style']);
-    set('v-drive', d['Drive Type']);
-    set('v-doors', d['Doors']);
-    // Generate slug ID
-    const slug = [d['Make'], d['Model'], d['Model Year']].filter(Boolean).join('-').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  document.getElementById('type-apply').onclick = () => applyDecoded(lastDecodedType);
+
+  function applyDecoded(n) {
+    if (!n) return;
+    const set = (id, v) => { if (v !== undefined && v !== null && v !== '') document.getElementById(id).value = v; };
+    set('v-brand', n.brand); set('v-model', n.model); set('v-year', n.year);
+    set('v-first', n.firstRegistration); set('v-fuel', n.fuel); set('v-trans', n.transmission);
+    set('v-drive', n.drive); set('v-power', n.power); set('v-disp', n.displacement);
+    set('v-doors', n.doors); set('v-seats', n.seats); set('v-cons', n.consumption);
+    set('v-co2', n.co2); set('v-color', n.color); set('v-interior', n.interior);
+    set('v-vin', n.vin); set('v-type', n.typeApproval); set('v-desc', n.description);
+    const slug = [n.brand, n.model, n.year].filter(Boolean).join('-').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     if (slug) document.getElementById('v-id').value = slug;
-    // Switch to add tab
+    if (Array.isArray(n.options) && n.options.length) renderOpts(n.options);
     document.querySelector('[data-tab="add"]').click();
-  };
+    window.scrollTo(0, 0);
+  }
+
+  // Warn if no API key configured
+  if (!getApiKey()) document.getElementById('api-warn').style.display = 'block';
 
   // ============ TYPE APPROVAL TEMPLATE ============
   const TEMPLATES = {
@@ -432,19 +608,71 @@
   document.getElementById('tpl-apply').onclick = () => {
     const seg = document.getElementById('tpl-seg').value;
     const brand = document.getElementById('tpl-brand').value;
-    const type = document.getElementById('type-input').value.trim();
     const st = document.getElementById('tpl-status');
     if (!seg) { st.className = 'status show err'; st.textContent = 'Sélectionnez un segment.'; return; }
     const tpl = TEMPLATES[seg];
     if (brand) document.getElementById('v-brand').value = brand;
-    if (type) document.getElementById('v-type').value = type;
     document.getElementById('v-doors').value = tpl.doors;
     document.getElementById('v-seats').value = tpl.seats;
-    // Fill options editor
     renderOpts(tpl.options.slice());
     st.className = 'status show ok'; st.textContent = '✓ Template appliqué — affinez dans l\'onglet « Ajouter / modifier ».';
     setTimeout(() => document.querySelector('[data-tab="add"]').click(), 600);
   };
+
+  // ============ SETTINGS TAB ============
+  function loadSettingsUI() {
+    document.getElementById('api-key-input').value = getApiKey();
+    document.getElementById('api-lang').value = getApiLang();
+  }
+  document.getElementById('api-save').onclick = () => {
+    const key = document.getElementById('api-key-input').value.trim();
+    const lang = document.getElementById('api-lang').value;
+    localStorage.setItem('scp_scinfo_key', key);
+    localStorage.setItem('scp_scinfo_lang', lang);
+    const st = document.getElementById('api-status');
+    st.className = 'status show ok'; st.textContent = '✓ Réglages enregistrés localement.';
+    document.getElementById('api-warn').style.display = key ? 'none' : 'block';
+    setTimeout(() => st.className = 'status', 3000);
+  };
+  document.getElementById('api-test').onclick = async () => {
+    const st = document.getElementById('api-status');
+    st.className = 'status show'; st.textContent = 'Test en cours…';
+    try {
+      // Ping with a dummy variant lookup — any 4xx with valid auth still = connection OK
+      const key = document.getElementById('api-key-input').value.trim() || getApiKey();
+      if (!key) { st.className = 'status show err'; st.textContent = 'Aucune clé saisie.'; return; }
+      const r = await fetch(`${SCI_BASE}/search?q=1PA537&type=variant&lang=${getApiLang()}`, {
+        headers: { 'Authorization': `Bearer ${key}`, 'Accept': 'application/json' }
+      });
+      if (r.status === 401 || r.status === 403) { st.className = 'status show err'; st.textContent = '✗ Clé invalide ou quota épuisé.'; return; }
+      const j = await r.json();
+      if (j.meta && j.meta.quota) {
+        st.className = 'status show ok';
+        st.textContent = `✓ Connexion OK — quota ${j.meta.quota.used}/${j.meta.quota.limit} (reste ${j.meta.quota.remaining}).`;
+      } else {
+        st.className = 'status show ok'; st.textContent = `✓ Réponse reçue (HTTP ${r.status}).`;
+      }
+    } catch(e) {
+      st.className = 'status show err'; st.textContent = 'Erreur réseau : ' + e.message;
+    }
+  };
+  document.getElementById('api-clear').onclick = () => {
+    if (!confirm('Supprimer la clé API locale ?')) return;
+    localStorage.removeItem('scp_scinfo_key');
+    document.getElementById('api-key-input').value = '';
+    document.getElementById('api-warn').style.display = 'block';
+    const st = document.getElementById('api-status');
+    st.className = 'status show'; st.textContent = 'Clé supprimée.';
+  };
+  document.getElementById('pwd-save').onclick = () => {
+    const v = document.getElementById('pwd-input').value;
+    if (v.length < 4) { const st = document.getElementById('pwd-status'); st.className='status show err'; st.textContent='Minimum 4 caractères.'; return; }
+    localStorage.setItem('scp_admin_pwd', v);
+    const st = document.getElementById('pwd-status'); st.className='status show ok'; st.textContent='✓ Code mis à jour. Il sera demandé à la prochaine connexion.';
+    document.getElementById('pwd-input').value = '';
+    setTimeout(() => st.className = 'status', 3000);
+  };
+  loadSettingsUI();
 
   // ============ OPTIONS EDITOR ============
   function renderOpts(list) {
