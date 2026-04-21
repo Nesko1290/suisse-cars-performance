@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Suisse Cars Performance — Garage de prestige, dépannage, carrosserie & mécanique</title>
+<meta name="description" content="Vente de véhicules de prestige, dépannage 24/7, transport, carrosserie et mécanique de haute précision à Genève." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --obsidian: #FFFFFF;
+    --carbon: #F7F8FA;
+    --graphite: #EEF2F7;
+    --steel: #D6DEE8;
+    --ivory: #0A2540;
+    --smoke: #6B7785;
+    --gold: #003D82;
+    --gold-glow: #2563EB;
+    --accent: #0057B7;
+    --spring: cubic-bezier(.16,1,.3,1);
+    --radius: 2px;
+    --maxw: 1360px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    background: var(--obsidian);
+    color: var(--ivory);
+    font-weight: 300;
+    line-height: 1.55;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+
+  /* Noise overlay for luxury texture */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 100;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    mix-blend-mode: multiply;
+  }
+
+  /* NAV */
+  nav.top {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 18px 0;
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    background: rgba(255, 255, 255, 0.55);
+    border-bottom: 1px solid rgba(0, 61, 130, 0.08);
+    transition: all .6s var(--spring);
+  }
+  nav.top.scrolled { background: rgba(255, 255, 255, 0.85); padding: 12px 0; }
+  nav.top .row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand {
+    display: flex; align-items: center; gap: 14px;
+    font-weight: 600; letter-spacing: 0.14em; font-size: 14px; text-transform: uppercase;
+  }
+  .brand .mark {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-weight: 700; font-size: 16px; letter-spacing: 0;
+    position: relative;
+  }
+  .brand .mark::before, .brand .mark::after {
+    content: ''; position: absolute; background: var(--gold);
+  }
+  .brand .mark::before { width: 8px; height: 1px; top: -1px; left: -4px; }
+  .brand .mark::after { width: 8px; height: 1px; bottom: -1px; right: -4px; }
+  .brand-name { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-name strong { color: var(--ivory); font-weight: 600; }
+  .brand-name span { color: var(--gold); font-size: 10px; letter-spacing: 0.3em; }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400;
+    color: var(--smoke); transition: color .3s var(--spring); position: relative;
+  }
+  .nav-links a:hover { color: var(--ivory); }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 1px;
+    background: var(--gold); transition: width .4s var(--spring);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 22px; border: 1px solid var(--gold); color: var(--ivory);
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500;
+    background: transparent; cursor: pointer;
+    transition: all .4s var(--spring); position: relative; overflow: hidden;
+  }
+  .cta-btn::before {
+    content: ''; position: absolute; inset: 0; background: var(--gold);
+    transform: translateX(-101%); transition: transform .5s var(--spring); z-index: -1;
+  }
+  .cta-btn:hover { color: var(--obsidian); }
+  .cta-btn:hover::before { transform: translateX(0); }
+  .cta-btn.solid { background: var(--gold); color: var(--obsidian); border-color: var(--gold); }
+  .cta-btn.solid::before { background: var(--ivory); }
+  .cta-btn.solid:hover { color: var(--obsidian); }
+
+  .mobile-toggle { display: none; background: none; border: none; color: var(--ivory); cursor: pointer; }
+
+  /* HERO */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: grid; align-items: center;
+    padding: 120px 0 80px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: -2;
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(0, 61, 130, 0.14), transparent 55%),
+      radial-gradient(ellipse at 10% 80%, rgba(0, 87, 183, 0.08), transparent 60%),
+      linear-gradient(180deg, var(--obsidian), var(--carbon));
+  }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(10, 37, 64,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10, 37, 64,0.018) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+  .hero-car {
+    position: absolute; right: -8%; bottom: -4%; width: 70%; max-width: 1100px;
+    z-index: -1; opacity: 0.85;
+    filter: drop-shadow(0 60px 80px rgba(10, 37, 64, 0.18));
+    animation: float 12s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center;
+    position: relative; z-index: 2;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 500;
+    color: var(--gold); margin-bottom: 32px;
+  }
+  .eyebrow::before {
+    content: ''; width: 48px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-size: clamp(48px, 7vw, 104px);
+    font-weight: 200; letter-spacing: -0.03em; line-height: 0.95;
+    margin-bottom: 36px;
+  }
+  .hero h1 em {
+    font-style: normal; font-weight: 500;
+    background: linear-gradient(135deg, var(--gold-glow), var(--gold));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero .lede {
+    font-size: clamp(16px, 1.3vw, 19px); color: var(--smoke); max-width: 520px;
+    margin-bottom: 48px; font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 48px;
+    padding: 48px; border: 1px solid rgba(0, 61, 130,0.18);
+    background: rgba(247, 248, 250, 0.5); backdrop-filter: blur(10px);
+    position: relative;
+  }
+  .hero-stats::before, .hero-stats::after {
+    content: ''; position: absolute; width: 20px; height: 20px;
+    border: 1px solid var(--gold);
+  }
+  .hero-stats::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+  .hero-stats::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+  .stat { }
+  .stat-num { font-size: 44px; font-weight: 300; letter-spacing: -0.02em; color: var(--ivory); display: block; }
+  .stat-num .amp { color: var(--gold); }
+  .stat-label { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke); margin-top: 6px; }
+
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    writing-mode: vertical-rl; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--smoke); z-index: 2;
+  }
+  .scroll-hint::after {
+    content: ''; display: block; width: 1px; height: 56px; background: var(--gold);
+    margin: 12px auto 0; animation: dropLine 2.4s ease-in-out infinite;
+    transform-origin: top;
+  }
+  @keyframes dropLine {
+    0%, 100% { transform: scaleY(0); }
+    50% { transform: scaleY(1); }
+  }
+
+  /* MARQUEE BRANDS */
+  .brands {
+    padding: 48px 0; border-top: 1px solid rgba(10, 37, 64,0.06); border-bottom: 1px solid rgba(10, 37, 64,0.06);
+    overflow: hidden; background: var(--carbon);
+  }
+  .marquee { display: flex; gap: 80px; animation: slide 42s linear infinite; width: max-content; }
+  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee span {
+    font-size: 22px; font-weight: 300; color: var(--smoke); white-space: nowrap;
+    letter-spacing: 0.08em;
+  }
+
+  /* SECTION HEADINGS */
+  section { position: relative; padding: 140px 0; }
+  .section-head { max-width: 760px; margin-bottom: 80px; }
+  .section-head h2 {
+    font-size: clamp(38px, 4.6vw, 68px); font-weight: 200; letter-spacing: -0.02em; line-height: 1.02;
+    margin-bottom: 20px;
+  }
+  .section-head h2 em {
+    font-style: normal; font-weight: 500; color: var(--gold);
+  }
+  .section-head p { color: var(--smoke); font-size: 17px; max-width: 620px; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: rgba(0, 61, 130,0.12);
+    border: 1px solid rgba(0, 61, 130,0.12);
+  }
+  .service {
+    padding: 56px 40px; background: var(--obsidian);
+    transition: all .6s var(--spring); cursor: pointer; position: relative;
+    min-height: 460px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .service:hover { background: var(--carbon); }
+  .service-num {
+    font-size: 11px; letter-spacing: 0.28em; color: var(--gold); font-weight: 500;
+  }
+  .service-icon {
+    width: 56px; height: 56px; display: grid; place-items: center;
+    border: 1px solid var(--gold); color: var(--gold);
+    margin: 40px 0 36px; transition: all .5s var(--spring);
+  }
+  .service:hover .service-icon { background: var(--gold); color: var(--obsidian); transform: rotate(45deg); }
+  .service:hover .service-icon svg { transform: rotate(-45deg); }
+  .service-icon svg { width: 26px; height: 26px; transition: transform .5s var(--spring); }
+  .service h3 {
+    font-size: 26px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 16px;
+  }
+  .service p { color: var(--smoke); font-size: 14px; line-height: 1.7; }
+  .service .arrow {
+    margin-top: 32px; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--gold); display: inline-flex; align-items: center; gap: 10px;
+  }
+  .service .arrow::after {
+    content: '→'; transition: transform .4s var(--spring);
+  }
+  .service:hover .arrow::after { transform: translateX(8px); }
+
+  /* FEATURED VEHICLES */
+  .featured { background: var(--carbon); }
+  .featured-wrap {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .v-card {
+    background: var(--obsidian); border: 1px solid rgba(10, 37, 64,0.05);
+    transition: all .5s var(--spring); cursor: pointer;
+    display: block; overflow: hidden; position: relative;
+  }
+  .v-card:hover { border-color: var(--gold); transform: translateY(-6px); }
+  .v-card .ph {
+    aspect-ratio: 16/10; overflow: hidden; background: var(--graphite);
+    position: relative;
+  }
+  .v-card .ph img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 1.2s var(--spring);
+  }
+  .v-card:hover .ph img { transform: scale(1.08); }
+  .v-card .ph::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(255, 255, 255,0.7));
+  }
+  .v-body { padding: 28px 28px 32px; }
+  .v-brand { font-size: 11px; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+  .v-model { font-size: 22px; font-weight: 400; margin-bottom: 18px; letter-spacing: -0.01em; }
+  .v-specs { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; color: var(--smoke); margin-bottom: 24px; }
+  .v-specs span { display: inline-flex; align-items: center; gap: 6px; }
+  .v-specs span::before { content: '·'; color: var(--gold); font-weight: 700; }
+  .v-specs span:first-child::before { display: none; }
+  .v-price {
+    font-size: 26px; font-weight: 300; letter-spacing: -0.02em;
+    padding-top: 20px; border-top: 1px solid rgba(10, 37, 64,0.08);
+  }
+  .v-price small { font-size: 11px; color: var(--smoke); letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 4px; font-weight: 500; }
+  .featured-foot { margin-top: 56px; text-align: center; }
+
+  /* ABOUT / STORY */
+  .story-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .story-visual {
+    aspect-ratio: 3/4; overflow: hidden; position: relative;
+    background: var(--graphite);
+  }
+  .story-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .story-visual::before {
+    content: ''; position: absolute; inset: 24px; border: 1px solid var(--gold);
+    pointer-events: none; z-index: 2;
+  }
+  .story-text h2 { margin-bottom: 32px; }
+  .story-text p { color: var(--smoke); margin-bottom: 24px; font-size: 17px; }
+  .story-sign {
+    margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(0, 61, 130,0.2);
+    display: flex; gap: 28px; align-items: center;
+  }
+  .story-sign-name { font-weight: 500; font-size: 18px; }
+  .story-sign-role { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+  /* DEPANNAGE STRIP */
+  .depannage {
+    background: linear-gradient(90deg, var(--graphite), var(--carbon));
+    padding: 80px 0; border-top: 1px solid rgba(0, 61, 130,0.14);
+    border-bottom: 1px solid rgba(0, 61, 130,0.14);
+    position: relative; overflow: hidden;
+  }
+  .depannage::before {
+    content: '24/7'; position: absolute; right: -4%; top: 50%; transform: translateY(-50%);
+    font-size: 320px; font-weight: 800; color: rgba(0, 61, 130,0.04); letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+  .depannage-row {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 48px; align-items: center; position: relative; z-index: 2;
+  }
+  .depannage-badge {
+    width: 88px; height: 88px; border: 1px solid var(--gold); display: grid; place-items: center;
+    color: var(--gold);
+  }
+  .depannage h3 { font-size: clamp(26px, 3.2vw, 42px); font-weight: 300; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .depannage p { color: var(--smoke); }
+
+  /* CONTACT */
+  .contact { background: var(--carbon); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  }
+  .contact-info { }
+  .contact-block {
+    padding: 28px 0; border-bottom: 1px solid rgba(10, 37, 64,0.08);
+    display: grid; grid-template-columns: 120px 1fr; gap: 20px;
+  }
+  .contact-block:last-child { border-bottom: 0; }
+  .contact-label { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); padding-top: 4px; }
+  .contact-value { font-size: 18px; font-weight: 300; }
+  .contact-value a { transition: color .3s var(--spring); }
+  .contact-value a:hover { color: var(--gold); }
+  .contact-form { background: var(--obsidian); padding: 56px 48px; border: 1px solid rgba(0, 61, 130,0.14); }
+  .contact-form h3 { font-size: 28px; font-weight: 300; margin-bottom: 28px; letter-spacing: -0.01em; }
+  .field { margin-bottom: 20px; }
+  .field label { display: block; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--smoke); margin-bottom: 8px; }
+  .field input, .field textarea, .field select {
+    width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgba(10, 37, 64,0.14);
+    padding: 12px 0; font-family: inherit; color: var(--ivory); font-size: 15px;
+    transition: border-color .3s var(--spring);
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none; border-bottom-color: var(--gold);
+  }
+  .field textarea { min-height: 100px; resize: vertical; }
+
+  /* FOOTER */
+  footer {
+    padding: 80px 0 32px; border-top: 1px solid rgba(10, 37, 64,0.08);
+    background: var(--obsidian);
+  }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+  .foot-grid h4 { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 500; }
+  .foot-grid ul { list-style: none; }
+  .foot-grid li { margin-bottom: 12px; color: var(--smoke); font-size: 14px; }
+  .foot-grid a:hover { color: var(--ivory); }
+  .foot-bottom {
+    padding-top: 32px; border-top: 1px solid rgba(10, 37, 64,0.06);
+    display: flex; justify-content: space-between; font-size: 12px; color: var(--smoke); letter-spacing: 0.1em;
+  }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(40px); transition: all 1s var(--spring); }
+  .reveal.on { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .featured-wrap { grid-template-columns: repeat(2, 1fr); }
+    .story-grid { grid-template-columns: 1fr; gap: 48px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .depannage-row { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .mobile-toggle { display: block; }
+    section { padding: 80px 0; }
+    .services-grid { grid-template-columns: 1fr; }
+    .featured-wrap { grid-template-columns: 1fr; }
+    .hero-stats { padding: 28px; }
+    .stat-num { font-size: 32px; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .cta-btn { justify-content: center; }
+    .contact-block { grid-template-columns: 1fr; }
+    .contact-form { padding: 32px 24px; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .foot-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="container row">
+    <a href="/" class="brand">
+      <span class="mark">S</span>
+      <span class="brand-name"><strong>Suisse Cars</strong><span>PERFORMANCE</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="vehicules.html">Véhicules</a></li>
+      <li><a href="recharge-clim.html">Recharge clim</a></li>
+      <li><a href="pneus.html">Pneus dès 50.-</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:+41783151040" class="cta-btn solid">☎ +41 78 315 10 40</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <img class="hero-car" src="https://picsum.photos/seed/herocar/1800/1000" alt="Véhicule de prestige" />
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Genève · Suisse Romande</div>
+        <h1>L'automobile<br/>dans sa<br/><em>forme la plus noble.</em></h1>
+        <p class="lede">Vente de véhicules de prestige, dépannage 24/7, transport sécurisé, carrosserie et mécanique de haute précision. Un seul interlocuteur pour l'excellence automobile.</p>
+        <div class="hero-actions">
+          <a href="vehicules.html" class="cta-btn solid">Découvrir le stock</a>
+          <a href="tel:+41783151040" class="cta-btn">☎ Appeler maintenant</a>
+        </div>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <span class="stat-num">15<span class="amp">+</span></span>
+          <div class="stat-label">Années d'expertise</div>
+        </div>
+        <div class="stat">
+          <span class="stat-num">24/7</span>
+          <div class="stat-label">Dépannage Suisse</div>
+        </div>
+        <div class="stat">
+          <span class="stat-num">800<span class="amp">+</span></span>
+          <div class="stat-label">Clients exigeants</div>
+        </div>
+        <div class="stat">
+          <span class="stat-num">100<span class="amp">%</span></span>
+          <div class="stat-label">Garantie atelier</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Découvrir</div>
+</header>
+
+<section class="brands">
+  <div class="marquee">
+    <span>PORSCHE</span><span>·</span><span>MERCEDES-AMG</span><span>·</span><span>BMW M</span><span>·</span><span>AUDI RS</span><span>·</span><span>LAMBORGHINI</span><span>·</span><span>FERRARI</span><span>·</span><span>MCLAREN</span><span>·</span><span>BENTLEY</span><span>·</span><span>ROLLS-ROYCE</span><span>·</span><span>MASERATI</span><span>·</span>
+    <span>PORSCHE</span><span>·</span><span>MERCEDES-AMG</span><span>·</span><span>BMW M</span><span>·</span><span>AUDI RS</span><span>·</span><span>LAMBORGHINI</span><span>·</span><span>FERRARI</span><span>·</span><span>MCLAREN</span><span>·</span><span>BENTLEY</span><span>·</span><span>ROLLS-ROYCE</span><span>·</span><span>MASERATI</span><span>·</span>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Nos expertises</div>
+      <h2>Un savoir-faire <em>complet</em>,<br/>sous un même toit.</h2>
+      <p>De la sélection du véhicule à son entretien en passant par la réparation après sinistre, nous couvrons l'intégralité du cycle automobile avec la même exigence.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service reveal">
+        <div>
+          <div class="service-num">01</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13l2-5h14l2 5v6h-2v-2H5v2H3v-6z"/><circle cx="7" cy="16" r="1.5"/><circle cx="17" cy="16" r="1.5"/></svg></div>
+          <h3>Vente Automobile</h3>
+          <p>Sélection rigoureuse de véhicules de prestige, contrôle technique approfondi, reprise et financement sur mesure.</p>
+        </div>
+        <a href="vehicules.html" class="arrow">Voir le stock</a>
+      </div>
+      <div class="service reveal">
+        <div>
+          <div class="service-num">02</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 17h20M4 17V11l4-5h8l4 5v6"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M2 14h4M18 14h4"/></svg></div>
+          <h3>Dépannage 24/7</h3>
+          <p>Intervention rapide toute la Suisse romande, plateau sécurisé, prise en charge VIP des véhicules d'exception.</p>
+        </div>
+        <a href="tel:+41783151040" class="arrow">Urgence</a>
+      </div>
+      <div class="service reveal">
+        <div>
+          <div class="service-num">03</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M9 20v-5h6v5"/></svg></div>
+          <h3>Carrosserie & Peinture</h3>
+          <p>Cabine climatisée, redressage au marbre, peinture cavité teinte d'origine, agréé assurances Suisse.</p>
+        </div>
+        <a href="#contact" class="arrow">Devis carrosserie</a>
+      </div>
+      <div class="service reveal">
+        <div>
+          <div class="service-num">04</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M16.9 16.9l2.1 2.1M4.9 19.1l2.1-2.1M16.9 7.1l2.1-2.1"/></svg></div>
+          <h3>Mécanique de Précision</h3>
+          <p>Diagnostic électronique multimarques, entretien constructeur, préparation, valises officielles.</p>
+        </div>
+        <a href="#contact" class="arrow">Prendre rdv</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Stock actuel</div>
+      <h2>Pièces <em>d'exception</em> disponibles<br/>immédiatement.</h2>
+      <p>Sélection rigoureuse, historique transparent, livraison possible dans toute l'Europe.</p>
+    </div>
+    <div class="featured-wrap" id="featured-wrap">
+      <!-- Filled by JS from /vehicles.json -->
+    </div>
+    <div class="featured-foot reveal">
+      <a href="vehicules.html" class="cta-btn">Voir tout le stock →</a>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-visual reveal">
+        <img src="https://picsum.photos/seed/atelier/1200/1600" alt="Atelier" />
+      </div>
+      <div class="story-text reveal">
+        <div class="eyebrow">Notre maison</div>
+        <h2>Une obsession :<br/><em>l'automobile bien faite.</em></h2>
+        <p>Fondée par des passionnés, Suisse Cars Performance réunit sous un même toit la vente de véhicules triés sur le volet et un atelier complet. Nos mécaniciens ont été formés chez les plus grands constructeurs — Porsche, Mercedes-AMG, Ferrari — avant de nous rejoindre.</p>
+        <p>Chaque véhicule qui quitte nos locaux — qu'il soit vendu, réparé ou simplement entretenu — passe par les mêmes mains expertes. C'est notre définition du service.</p>
+        <div class="story-sign">
+          <div>
+            <div class="story-sign-name">L'équipe Suisse Cars Performance</div>
+            <div class="story-sign-role">Genève · Suisse</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="depannage">
+  <div class="container">
+    <div class="depannage-row">
+      <div class="depannage-badge">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l3 7h7l-5.5 4 2 8L12 17l-6.5 4 2-8L2 9h7z"/></svg>
+      </div>
+      <div>
+        <h3>Dépannage & transport 24/7 en Suisse</h3>
+        <p>Que vous soyez en panne ou que vous souhaitiez faire convoyer votre véhicule en sécurité, nous intervenons sous 30 minutes en zone urbaine.</p>
+      </div>
+      <a href="tel:+41783151040" class="cta-btn solid">☎ Urgence 24/7</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Nous rencontrer</div>
+      <h2>Un projet, une urgence,<br/><em>une simple question ?</em></h2>
+      <p>Notre équipe vous répond personnellement. Réponse sous 2 heures ouvrées, ou par téléphone immédiatement.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-block">
+          <div class="contact-label">Téléphone</div>
+          <div class="contact-value"><a href="tel:+41783151040">+41 78 315 10 40</a></div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-label">E-mail</div>
+          <div class="contact-value"><a href="mailto:info@swisscarsperformance.ch">info@swisscarsperformance.ch</a></div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-label">Showroom</div>
+          <div class="contact-value">Route du Lac 00<br/>1200 Genève, Suisse</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-label">Horaires</div>
+          <div class="contact-value">Lun–Ven · 08:00–18:30<br/>Sam · 09:00–17:00<br/><span style="color:var(--gold)">Urgence 24/7</span></div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-label">Réseaux</div>
+          <div class="contact-value"><a href="#">Instagram</a> · <a href="#">Facebook</a></div>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Merci, nous vous recontactons rapidement.');">
+        <h3>Demande de rappel</h3>
+        <div class="field"><label>Nom complet</label><input type="text" required /></div>
+        <div class="field"><label>Téléphone</label><input type="tel" required /></div>
+        <div class="field"><label>Objet</label>
+          <select>
+            <option>Acquisition d'un véhicule</option>
+            <option>Dépannage / transport</option>
+            <option>Carrosserie</option>
+            <option>Mécanique / entretien</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="field"><label>Message</label><textarea></textarea></div>
+        <button type="submit" class="cta-btn solid" style="width:100%">Envoyer ma demande</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a href="/" class="brand" style="margin-bottom:24px">
+          <span class="mark">S</span>
+          <span class="brand-name"><strong>Suisse Cars</strong><span>PERFORMANCE</span></span>
+        </a>
+        <p style="color:var(--smoke); font-size:14px; max-width:320px; margin-top:24px;">Garage de prestige basé à Genève. Vente, dépannage, carrosserie et mécanique — au service de l'automobile d'exception depuis plus de 15 ans.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Vente</a></li>
+          <li><a href="#services">Dépannage 24/7</a></li>
+          <li><a href="#services">Carrosserie</a></li>
+          <li><a href="#services">Mécanique</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="vehicules.html">Stock</a></li>
+          <li><a href="#story">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="admin.html">Admin</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+41783151040">+41 78 315 10 40</a></li>
+          <li><a href="mailto:info@swisscarsperformance.ch">info@swisscarsperformance.ch</a></li>
+          <li>Route du Lac 00<br/>1200 Genève</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span id="year"></span> Suisse Cars Performance — Tous droits réservés</div>
+      <div>Genève · Suisse</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Nav scroll state
+  const nav = document.querySelector('nav.top');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal observer
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.14 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Featured vehicles
+  fetch('vehicles.json')
+    .then(r => r.json())
+    .then(data => {
+      const wrap = document.getElementById('featured-wrap');
+      data.vehicles.slice(0, 3).forEach(v => {
+        const a = document.createElement('a');
+        a.href = 'vehicule.html?id=' + v.id;
+        a.className = 'v-card reveal';
+        a.innerHTML = `
+          <div class="ph"><img src="${v.images[0]}" alt="${v.brand} ${v.model}"/></div>
+          <div class="v-body">
+            <div class="v-brand">${v.brand}</div>
+            <div class="v-model">${v.model}</div>
+            <div class="v-specs">
+              <span>${v.year}</span>
+              <span>${v.mileage.toLocaleString('fr-CH')} km</span>
+              <span>${v.power} ch</span>
+              <span>${v.transmission}</span>
+            </div>
+            <div class="v-price"><small>Prix TTC</small>CHF ${v.price.toLocaleString('fr-CH')}</div>
+          </div>
+        `;
+        wrap.appendChild(a);
+        io.observe(a);
+      });
+    });
+</script>
+</body>
+</html>
