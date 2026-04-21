@@ -23,7 +23,7 @@
       "typeApproval": "1CE 123 45",
       "location": "Genève, CH",
       "images": [
-        "https://picsum.photos/seed/porsche911turbo/1600/1000"
+        "placeholder-car.svg"
       ],
       "options": [
         "Pack Sport Chrono",
@@ -62,7 +62,7 @@
       "typeApproval": "1BA 987 65",
       "location": "Genève, CH",
       "images": [
-        "https://picsum.photos/seed/amggt63s/1600/1000"
+        "placeholder-car.svg"
       ],
       "options": [
         "Pack AMG Dynamic Plus",
@@ -101,7 +101,7 @@
       "typeApproval": "1CF 456 78",
       "location": "Genève, CH",
       "images": [
-        "https://picsum.photos/seed/bmwm4/1600/1000"
+        "placeholder-car.svg"
       ],
       "options": [
         "M Drive Professional",
@@ -140,7 +140,7 @@
       "typeApproval": "1AE 234 56",
       "location": "Genève, CH",
       "images": [
-        "https://picsum.photos/seed/audirs6/1600/1000"
+        "placeholder-car.svg"
       ],
       "options": [
         "Pack Dynamic Plus",
@@ -179,7 +179,7 @@
       "typeApproval": "1DG 567 89",
       "location": "Genève, CH",
       "images": [
-        "https://picsum.photos/seed/lambourus/1600/1000"
+        "placeholder-car.svg"
       ],
       "options": [
         "Style Package Jaune",
@@ -218,7 +218,7 @@
       "typeApproval": "1JL 345 67",
       "location": "Genève, CH",
       "images": [
-        "https://picsum.photos/seed/rangerover/1600/1000"
+        "placeholder-car.svg"
       ],
       "options": [
         "SV Bespoke",
