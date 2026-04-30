@@ -16,6 +16,7 @@ export default {
         services: resolve(__dirname, 'services.html'),
         rechargeClim: resolve(__dirname, 'recharge-clim.html'),
         pneus: resolve(__dirname, 'pneus.html'),
+        vidange: resolve(__dirname, 'vidange.html'),
       },
     },
   },
