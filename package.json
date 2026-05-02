@@ -3,12 +3,20 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "build:pages": "BASE=/suisse-cars-performance/ vite build",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "serve": "npm run build && node server.js"
   },
   "dependencies": {
+    "compression": "^1.8.1",
+    "express": "^5.2.1",
     "vite": "^5.4.0"
   }
 }
