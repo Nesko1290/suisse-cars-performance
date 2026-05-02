@@ -2,6 +2,7 @@
   "name": "suisse-cars-performance",
   "version": "1.0.0",
   "type": "module",
+  "main": "server.js",
   "private": true,
   "engines": {
     "node": ">=18.0.0"
@@ -12,8 +13,7 @@
     "build:pages": "BASE=/suisse-cars-performance/ vite build",
     "preview": "vite preview",
     "start": "node server.js",
-    "serve": "npm run build && node server.js",
-    "postinstall": "npm run build"
+    "serve": "npm run build && node server.js"
   },
   "dependencies": {
     "compression": "^1.8.1",
