@@ -132,14 +132,26 @@
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   }
   .hero-car {
-    position: absolute; right: -8%; bottom: -4%; width: 70%; max-width: 1100px;
-    z-index: -1; opacity: 0.85;
-    filter: drop-shadow(0 60px 80px rgba(10, 37, 64, 0.18));
-    animation: float 12s ease-in-out infinite;
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 58%; max-width: 1000px; height: 100%;
+    z-index: -1;
+    object-fit: cover; object-position: center;
+    filter: contrast(1.05) saturate(1.05) brightness(0.92);
+    -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
+    mask-image: linear-gradient(to left, black 60%, transparent 100%);
   }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-14px); }
+  /* Subtle floating overlay photo (small, in corner) */
+  .hero-photo-accent {
+    position: absolute; right: 6%; top: 18%;
+    width: clamp(180px, 22vw, 320px); aspect-ratio: 4/5;
+    z-index: -1; object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.35);
+    transform: rotate(3deg);
+  }
+  @media (max-width: 1024px) {
+    .hero-car { width: 100%; opacity: 0.4; mask-image: linear-gradient(to top, black 30%, transparent 70%); -webkit-mask-image: linear-gradient(to top, black 30%, transparent 70%); }
+    .hero-photo-accent { display: none; }
   }
   .hero-grid {
     display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center;
@@ -496,7 +508,7 @@
   "name": "Suisse Cars Performance",
   "description": "Garage de prestige à Genève : vente de véhicules, dépannage 24/7, carrosserie, mécanique, recharge climatisation, changement de pneus.",
   "url": "https://nesko1290.github.io/suisse-cars-performance/",
-  "telephone": "+41783151040",
+  "telephone": "+41223149521",
   "email": "info@swisscarsperformance.ch",
   "priceRange": "CHF",
   "currenciesAccepted": "CHF, EUR",
@@ -544,13 +556,14 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="mobile-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links"><span class="line"></span><span class="line"></span><span class="line"></span></button>
-      <a href="tel:+41783151040" class="cta-btn solid"><span class="tel-long">☎ +41 78 315 10 40</span><span class="tel-short">☎ Appeler</span></a>
+      <a href="tel:+41223149521" class="cta-btn solid"><span class="tel-long">☎ +41 22 314 95 21</span><span class="tel-short">☎ Appeler</span></a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="hero-bg"></div>
-  <img class="hero-car" src="placeholder-car.svg" alt="Véhicule de prestige" />
+  <img class="hero-car" src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=1600&q=85&auto=format&fit=crop" alt="Audi R8 — véhicule de prestige Suisse Cars Performance" />
+  <img class="hero-photo-accent" src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600&q=85&auto=format&fit=crop" alt="Mécanicien Suisse Cars Performance — entretien moteur" />
   <div class="container">
     <div class="hero-grid">
       <div class="reveal">
@@ -559,7 +572,7 @@
         <p class="lede">Vente de véhicules de prestige, dépannage 24/7, transport sécurisé, carrosserie et mécanique de haute précision. Un seul interlocuteur pour l'excellence automobile.</p>
         <div class="hero-actions">
           <a href="vehicules.html" class="cta-btn solid">Découvrir le stock</a>
-          <a href="tel:+41783151040" class="cta-btn">☎ Appeler maintenant</a>
+          <a href="tel:+41223149521" class="cta-btn">☎ Appeler maintenant</a>
         </div>
       </div>
       <div class="hero-stats reveal">
@@ -616,7 +629,7 @@
           <h3>Dépannage 24/7</h3>
           <p>Intervention rapide toute la Suisse romande, plateau sécurisé, prise en charge VIP des véhicules d'exception.</p>
         </div>
-        <a href="tel:+41783151040" class="arrow">Urgence</a>
+        <a href="tel:+41223149521" class="arrow">Urgence</a>
       </div>
       <div class="service reveal">
         <div>
@@ -688,7 +701,7 @@
         <h3>Dépannage & transport 24/7 en Suisse</h3>
         <p>Que vous soyez en panne ou que vous souhaitiez faire convoyer votre véhicule en sécurité, nous intervenons sous 30 minutes en zone urbaine.</p>
       </div>
-      <a href="tel:+41783151040" class="cta-btn solid">☎ Urgence 24/7</a>
+      <a href="tel:+41223149521" class="cta-btn solid">☎ Urgence 24/7</a>
     </div>
   </div>
 </section>
@@ -704,7 +717,7 @@
       <div class="contact-info reveal">
         <div class="contact-block">
           <div class="contact-label">Téléphone</div>
-          <div class="contact-value"><a href="tel:+41783151040">+41 78 315 10 40</a></div>
+          <div class="contact-value"><a href="tel:+41223149521">+41 22 314 95 21</a></div>
         </div>
         <div class="contact-block">
           <div class="contact-label">E-mail</div>
@@ -774,7 +787,7 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="tel:+41783151040">+41 78 315 10 40</a></li>
+          <li><a href="tel:+41223149521">+41 22 314 95 21</a></li>
           <li><a href="mailto:info@swisscarsperformance.ch">info@swisscarsperformance.ch</a></li>
           <li>Route du Lac 00<br/>1200 Genève</li>
         </ul>
