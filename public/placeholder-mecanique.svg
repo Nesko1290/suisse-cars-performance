@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0A2540"/>
-      <stop offset="100%" stop-color="#003D82"/>
+      <stop offset="0%" stop-color="#1A1A1A"/>
+      <stop offset="100%" stop-color="#DA291C"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="900" fill="url(#bg)"/>
@@ -25,9 +25,9 @@
   </g>
 
   <!-- Gear decoration -->
-  <g transform="translate(900, 300)" fill="rgba(0,87,183,0.45)">
+  <g transform="translate(900, 300)" fill="rgba(176,0,26,0.45)">
     <circle cx="0" cy="0" r="70"/>
-    <circle cx="0" cy="0" r="30" fill="#0A2540"/>
+    <circle cx="0" cy="0" r="30" fill="#1A1A1A"/>
     <g>
       <rect x="-10" y="-90" width="20" height="30" rx="3"/>
       <rect x="-10" y="60" width="20" height="30" rx="3"/>
@@ -45,7 +45,7 @@
   <!-- Small gear -->
   <g transform="translate(300, 600)" fill="rgba(255,255,255,0.25)">
     <circle cx="0" cy="0" r="45"/>
-    <circle cx="0" cy="0" r="18" fill="#0A2540"/>
+    <circle cx="0" cy="0" r="18" fill="#1A1A1A"/>
     <g>
       <rect x="-6" y="-58" width="12" height="20" rx="2"/>
       <rect x="-6" y="38" width="12" height="20" rx="2"/>

@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0A2540"/>
-      <stop offset="50%" stop-color="#003D82"/>
-      <stop offset="100%" stop-color="#0057B7"/>
+      <stop offset="0%" stop-color="#1A1A1A"/>
+      <stop offset="50%" stop-color="#DA291C"/>
+      <stop offset="100%" stop-color="#B0001A"/>
     </linearGradient>
     <linearGradient id="car-body" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#E8EEF5"/>
-      <stop offset="45%" stop-color="#BFCCDA"/>
+      <stop offset="45%" stop-color="#D6B5B5"/>
       <stop offset="100%" stop-color="#8FA1B3"/>
     </linearGradient>
     <radialGradient id="spotlight" cx="50%" cy="40%" r="60%">
@@ -69,7 +69,7 @@
       <circle cx="0" cy="0" r="68" fill="#0A1020"/>
       <circle cx="0" cy="0" r="58" fill="#1a2232"/>
       <circle cx="0" cy="0" r="28" fill="#E8EEF5"/>
-      <circle cx="0" cy="0" r="10" fill="#003D82"/>
+      <circle cx="0" cy="0" r="10" fill="#DA291C"/>
       <g stroke="#E8EEF5" stroke-width="4" fill="none">
         <line x1="-54" y1="0" x2="-28" y2="0"/>
         <line x1="54" y1="0" x2="28" y2="0"/>
@@ -85,7 +85,7 @@
       <circle cx="0" cy="0" r="68" fill="#0A1020"/>
       <circle cx="0" cy="0" r="58" fill="#1a2232"/>
       <circle cx="0" cy="0" r="28" fill="#E8EEF5"/>
-      <circle cx="0" cy="0" r="10" fill="#003D82"/>
+      <circle cx="0" cy="0" r="10" fill="#DA291C"/>
       <g stroke="#E8EEF5" stroke-width="4" fill="none">
         <line x1="-54" y1="0" x2="-28" y2="0"/>
         <line x1="54" y1="0" x2="28" y2="0"/>

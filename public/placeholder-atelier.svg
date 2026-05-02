@@ -3,7 +3,7 @@
     <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#EEF2F7"/>
       <stop offset="60%" stop-color="#D6DEE8"/>
-      <stop offset="100%" stop-color="#0A2540"/>
+      <stop offset="100%" stop-color="#1A1A1A"/>
     </linearGradient>
     <linearGradient id="liftBar" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#8FA1B3"/>
@@ -30,7 +30,7 @@
   </g>
 
   <!-- Floor -->
-  <rect x="0" y="1200" width="1200" height="400" fill="#0A2540"/>
+  <rect x="0" y="1200" width="1200" height="400" fill="#1A1A1A"/>
   <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
     <line x1="0" y1="1240" x2="1200" y2="1240"/>
     <line x1="0" y1="1320" x2="1200" y2="1320"/>
@@ -41,19 +41,19 @@
   <!-- Two-post lift -->
   <g transform="translate(600, 780)">
     <!-- Base -->
-    <rect x="-220" y="420" width="440" height="18" fill="#003D82" rx="2"/>
+    <rect x="-220" y="420" width="440" height="18" fill="#DA291C" rx="2"/>
     <!-- Left post -->
     <rect x="-260" y="-140" width="40" height="580" fill="url(#liftBar)" rx="3"/>
     <!-- Right post -->
     <rect x="220" y="-140" width="40" height="580" fill="url(#liftBar)" rx="3"/>
     <!-- Top crossbar -->
-    <rect x="-260" y="-140" width="520" height="22" fill="#003D82" rx="2"/>
+    <rect x="-260" y="-140" width="520" height="22" fill="#DA291C" rx="2"/>
     <!-- Lift arms (raised, holding car) -->
     <rect x="-200" y="60" width="180" height="14" fill="#5A6878" rx="2"/>
     <rect x="20" y="60" width="180" height="14" fill="#5A6878" rx="2"/>
     <!-- Pads -->
-    <circle cx="-110" cy="50" r="18" fill="#0A2540"/>
-    <circle cx="110" cy="50" r="18" fill="#0A2540"/>
+    <circle cx="-110" cy="50" r="18" fill="#1A1A1A"/>
+    <circle cx="110" cy="50" r="18" fill="#1A1A1A"/>
   </g>
 
   <!-- Car on lift (simplified silhouette) -->
@@ -69,7 +69,7 @@
              L 300 20
              L -240 20
              Z"
-          fill="#BFCCDA"/>
+          fill="#D6B5B5"/>
     <!-- Windows -->
     <path d="M -120 -65
              Q -60 -100 0 -102
@@ -83,11 +83,11 @@
 
   <!-- Toolbox -->
   <g transform="translate(160, 1100)">
-    <rect x="0" y="0" width="180" height="180" fill="#003D82" rx="4"/>
-    <rect x="0" y="0" width="180" height="40" fill="#0057B7" rx="4"/>
-    <rect x="10" y="60" width="160" height="22" fill="#0A2540" rx="2"/>
-    <rect x="10" y="92" width="160" height="22" fill="#0A2540" rx="2"/>
-    <rect x="10" y="124" width="160" height="22" fill="#0A2540" rx="2"/>
+    <rect x="0" y="0" width="180" height="180" fill="#DA291C" rx="4"/>
+    <rect x="0" y="0" width="180" height="40" fill="#B0001A" rx="4"/>
+    <rect x="10" y="60" width="160" height="22" fill="#1A1A1A" rx="2"/>
+    <rect x="10" y="92" width="160" height="22" fill="#1A1A1A" rx="2"/>
+    <rect x="10" y="124" width="160" height="22" fill="#1A1A1A" rx="2"/>
     <circle cx="90" cy="20" r="4" fill="#E8EEF5"/>
   </g>
 
@@ -109,7 +109,7 @@
   </g>
 
   <!-- Corner accents -->
-  <g stroke="rgba(0,61,130,0.5)" stroke-width="2" fill="none">
+  <g stroke="rgba(218,41,28,0.5)" stroke-width="2" fill="none">
     <path d="M 40 40 L 40 100 M 40 40 L 100 40"/>
     <path d="M 1160 40 L 1160 100 M 1160 40 L 1100 40"/>
   </g>
