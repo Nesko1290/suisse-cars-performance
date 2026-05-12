@@ -21,7 +21,7 @@
       "firstRegistration": "2018-01",
       "vin": "",
       "typeApproval": "",
-      "location": "Genève, CH",
+      "location": "Evionnaz, CH",
       "images": [
         "vehicles/ford-fiesta-2018/01-exterieur-avant.jpeg",
         "vehicles/ford-fiesta-2018/02-exterieur-avant-2.jpeg",
@@ -48,7 +48,61 @@
         "ABS + ESP",
         "Airbags multiples"
       ],
-      "description": "Citadine économique et fiable. Ford Fiesta 1.0 SCTI 100ch en boîte mécanique 5 vitesses. Faible consommation (~5L/100km), idéale ville et trajets quotidiens. Entretien régulier. Visible à Genève sur RDV."
+      "description": "Citadine économique et fiable. Ford Fiesta 1.0 SCTI 100ch en boîte mécanique 5 vitesses. Faible consommation (~5L/100km), idéale ville et trajets quotidiens. Entretien régulier. Visible à Evionnaz sur RDV."
+    },
+    {
+      "id": "audi-s3-sedan-2023",
+      "brand": "Audi",
+      "model": "S3 Sedan",
+      "year": 2023,
+      "price": 34900,
+      "mileage": 35900,
+      "fuel": "Essence",
+      "transmission": "Automatique S tronic 7 vitesses",
+      "power": 310,
+      "displacement": 1984,
+      "drive": "Quattro (intégrale)",
+      "color": "Noir Mythos métallisé",
+      "interior": "Cuir/Alcantara noir matelassé",
+      "doors": 4,
+      "seats": 5,
+      "co2": 172,
+      "consumption": 7.5,
+      "firstRegistration": "2023-01",
+      "vin": "",
+      "typeApproval": "",
+      "location": "Evionnaz, CH",
+      "images": [
+        "vehicles/audi-s3-2023/01-exterieur-arriere.jpeg",
+        "vehicles/audi-s3-2023/02-interieur-cockpit.jpeg",
+        "vehicles/audi-s3-2023/03-compteur-volant.jpeg",
+        "vehicles/audi-s3-2023/04-exterieur-avant.jpeg",
+        "vehicles/audi-s3-2023/05-console-mmi.jpeg",
+        "vehicles/audi-s3-2023/06-interieur-large.jpeg",
+        "vehicles/audi-s3-2023/07-exterieur-arriere-2.jpeg",
+        "vehicles/audi-s3-2023/08-banquette-arriere-droite.jpeg",
+        "vehicles/audi-s3-2023/09-banquette-arriere-gauche.jpeg"
+      ],
+      "options": [
+        "Audi Virtual Cockpit",
+        "MMI Navigation Plus",
+        "Quattro intégrale",
+        "S tronic 7 vitesses",
+        "Volant sport S multifonctions cuir perforé",
+        "Sièges sport S cuir/Alcantara matelassés",
+        "Freins sport rouges",
+        "Jantes alliage noir 19\"",
+        "Phares LED Matrix",
+        "Climatisation automatique bi-zone",
+        "Caméra de recul",
+        "Aide au stationnement avant/arrière",
+        "Régulateur de vitesse adaptatif",
+        "Keyless Entry & Start",
+        "Mode de conduite Audi Drive Select",
+        "Échappement sport S",
+        "Suspension sport S"
+      ],
+      "description": "Audi S3 Sedan 2.0 TFSI 310ch quattro S tronic. Finition noir intégrale, intérieur cuir/Alcantara matelassé. Toutes options, état impeccable. Carnet d'entretien complet. Visible à Evionnaz sur RDV."
     }
   ]
 }
