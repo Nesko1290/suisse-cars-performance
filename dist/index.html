@@ -824,7 +824,7 @@
     .then(r => r.json())
     .then(data => {
       const wrap = document.getElementById('featured-wrap');
-      data.vehicles.slice(0, 3).forEach(v => {
+      data.vehicles.forEach(v => {
         const a = document.createElement('a');
         a.href = 'vehicule.html?id=' + v.id;
         a.className = 'v-card reveal';
