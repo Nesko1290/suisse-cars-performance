@@ -132,14 +132,25 @@
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   }
   .hero-car {
-    position: absolute; right: -8%; bottom: -4%; width: 70%; max-width: 1100px;
-    z-index: -1; opacity: 0.85;
-    filter: drop-shadow(0 60px 80px rgba(10, 37, 64, 0.18));
-    animation: float 12s ease-in-out infinite;
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 58%; max-width: 1000px; height: 100%;
+    z-index: -1;
+    object-fit: cover; object-position: center;
+    filter: contrast(1.05) saturate(1.05) brightness(0.92);
+    -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
+    mask-image: linear-gradient(to left, black 60%, transparent 100%);
   }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-14px); }
+  .hero-photo-accent {
+    position: absolute; right: 6%; top: 18%;
+    width: clamp(180px, 22vw, 320px); aspect-ratio: 4/5;
+    z-index: -1; object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.35);
+    transform: rotate(3deg);
+  }
+  @media (max-width: 1024px) {
+    .hero-car { width: 100%; opacity: 0.4; mask-image: linear-gradient(to top, black 30%, transparent 70%); -webkit-mask-image: linear-gradient(to top, black 30%, transparent 70%); }
+    .hero-photo-accent { display: none; }
   }
   .hero-grid {
     display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center;
@@ -552,7 +563,8 @@
 
 <header class="hero">
   <div class="hero-bg"></div>
-  <img class="hero-car" src="placeholder-car.svg" alt="Véhicule de prestige" />
+  <img class="hero-car" src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=1600&q=85&auto=format&fit=crop" alt="Audi R8 — véhicule de prestige Suisse Cars Performance" />
+  <img class="hero-photo-accent" src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600&q=85&auto=format&fit=crop" alt="Mécanicien Suisse Cars Performance — entretien moteur" />
   <div class="container">
     <div class="hero-grid">
       <div class="reveal">
