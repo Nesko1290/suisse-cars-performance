@@ -546,7 +546,7 @@
 <nav class="top">
   <div class="container row">
     <a href="index.html" class="brand">
-      <img src="logo-scp.png" alt="Swiss Cars Performance" class="brand-logo" />
+      <img src="https://raw.githubusercontent.com/Nesko1290/suisse-cars-performance/gh-pages/logo-scp.png" alt="Swiss Cars Performance" class="brand-logo" />
     </a>
     <ul class="nav-links" id="nav-links">
       <li><a href="services.html">Services</a></li>
@@ -762,7 +762,7 @@
     <div class="foot-grid">
       <div>
         <a href="index.html" class="brand" style="margin-bottom:24px">
-          <img src="logo-scp.png" alt="Swiss Cars Performance" class="brand-logo" />
+          <img src="https://raw.githubusercontent.com/Nesko1290/suisse-cars-performance/gh-pages/logo-scp.png" alt="Swiss Cars Performance" class="brand-logo" />
         </a>
         <p style="color:var(--smoke); font-size:14px; max-width:320px; margin-top:24px;">Garage de prestige basé à Genève. Vente, dépannage, carrosserie et mécanique — au service de l'automobile d'exception depuis plus de 15 ans.</p>
       </div>
@@ -817,7 +817,7 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // Featured vehicles
-  fetch('vehicles.json?v=' + Date.now())
+  fetch('https://raw.githubusercontent.com/Nesko1290/suisse-cars-performance/gh-pages/vehicles.json?v=' + Date.now())
     .then(r => r.json())
     .then(data => {
       const wrap = document.getElementById('featured-wrap');
