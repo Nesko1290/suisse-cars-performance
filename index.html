@@ -496,19 +496,21 @@
   "name": "Suisse Cars Performance",
   "description": "Garage de prestige à Genève : vente de véhicules, dépannage 24/7, carrosserie, mécanique, recharge climatisation, changement de pneus.",
   "url": "https://nesko1290.github.io/suisse-cars-performance/",
-  "telephone": "+41783151040",
-  "email": "info@swisscarsperformance.ch",
+  "telephone": "+41223149521",
+  "email": "info@swisscarsperformance.com",
   "priceRange": "CHF",
   "currenciesAccepted": "CHF, EUR",
   "paymentAccepted": "Cash, Credit Card",
   "address": {
     "@type": "PostalAddress",
-    "addressCountry": "CH",
-    "addressRegion": "Genève",
-    "addressLocality": "Genève"
+    "streetAddress": "Route du Simplon 51",
+    "postalCode": "1902",
+    "addressLocality": "Evionnaz",
+    "addressRegion": "Valais",
+    "addressCountry": "CH"
   },
   "areaServed": [
-    { "@type": "AdministrativeArea", "name": "Genève" },
+    { "@type": "AdministrativeArea", "name": "Valais" },
     { "@type": "AdministrativeArea", "name": "Suisse Romande" },
     { "@type": "Country", "name": "Suisse" }
   ],
@@ -544,7 +546,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="mobile-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links"><span class="line"></span><span class="line"></span><span class="line"></span></button>
-      <a href="tel:+41783151040" class="cta-btn solid"><span class="tel-long">☎ +41 78 315 10 40</span><span class="tel-short">☎ Appeler</span></a>
+      <a href="tel:+41223149521" class="cta-btn solid"><span class="tel-long">☎ +41 22 314 95 21</span><span class="tel-short">☎ Appeler</span></a>
   </div>
 </nav>
 
@@ -559,7 +561,7 @@
         <p class="lede">Vente de véhicules de prestige, dépannage 24/7, transport sécurisé, carrosserie et mécanique de haute précision. Un seul interlocuteur pour l'excellence automobile.</p>
         <div class="hero-actions">
           <a href="vehicules.html" class="cta-btn solid">Découvrir le stock</a>
-          <a href="tel:+41783151040" class="cta-btn">☎ Appeler maintenant</a>
+          <a href="tel:+41223149521" class="cta-btn">☎ Appeler maintenant</a>
         </div>
       </div>
       <div class="hero-stats reveal">
@@ -616,7 +618,7 @@
           <h3>Dépannage 24/7</h3>
           <p>Intervention rapide toute la Suisse romande, plateau sécurisé, prise en charge VIP des véhicules d'exception.</p>
         </div>
-        <a href="tel:+41783151040" class="arrow">Urgence</a>
+        <a href="tel:+41223149521" class="arrow">Urgence</a>
       </div>
       <div class="service reveal">
         <div>
@@ -688,7 +690,7 @@
         <h3>Dépannage & transport 24/7 en Suisse</h3>
         <p>Que vous soyez en panne ou que vous souhaitiez faire convoyer votre véhicule en sécurité, nous intervenons sous 30 minutes en zone urbaine.</p>
       </div>
-      <a href="tel:+41783151040" class="cta-btn solid">☎ Urgence 24/7</a>
+      <a href="tel:+41223149521" class="cta-btn solid">☎ Urgence 24/7</a>
     </div>
   </div>
 </section>
@@ -704,15 +706,15 @@
       <div class="contact-info reveal">
         <div class="contact-block">
           <div class="contact-label">Téléphone</div>
-          <div class="contact-value"><a href="tel:+41783151040">+41 78 315 10 40</a></div>
+          <div class="contact-value"><a href="tel:+41223149521">+41 22 314 95 21</a></div>
         </div>
         <div class="contact-block">
           <div class="contact-label">E-mail</div>
-          <div class="contact-value"><a href="mailto:info@swisscarsperformance.ch">info@swisscarsperformance.ch</a></div>
+          <div class="contact-value"><a href="mailto:info@swisscarsperformance.com">info@swisscarsperformance.com</a></div>
         </div>
         <div class="contact-block">
           <div class="contact-label">Showroom</div>
-          <div class="contact-value">Route du Lac 00<br/>1200 Genève, Suisse</div>
+          <div class="contact-value">Route du Simplon 51<br/>1902 Evionnaz, Suisse</div>
         </div>
         <div class="contact-block">
           <div class="contact-label">Horaires</div>
@@ -774,9 +776,9 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="tel:+41783151040">+41 78 315 10 40</a></li>
-          <li><a href="mailto:info@swisscarsperformance.ch">info@swisscarsperformance.ch</a></li>
-          <li>Route du Lac 00<br/>1200 Genève</li>
+          <li><a href="tel:+41223149521">+41 22 314 95 21</a></li>
+          <li><a href="mailto:info@swisscarsperformance.com">info@swisscarsperformance.com</a></li>
+          <li>Route du Simplon 51<br/>1902 Evionnaz</li>
         </ul>
       </div>
     </div>
@@ -808,7 +810,7 @@
     .then(r => r.json())
     .then(data => {
       const wrap = document.getElementById('featured-wrap');
-      data.vehicles.slice(0, 3).forEach(v => {
+      data.vehicles.forEach(v => {
         const a = document.createElement('a');
         a.href = 'vehicule.html?id=' + v.id;
         a.className = 'v-card reveal';
